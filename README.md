@@ -1,2 +1,2 @@
 # asppa
-Astrocyte Spatial Point Pattern Analysis in the arcuate nucleus of the hypothalamus 
+R scripts for Analysis of Spatial Point Patterns of Astrocytes in the arcuate nucleus of the hypothalamus.

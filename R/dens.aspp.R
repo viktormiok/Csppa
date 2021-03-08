@@ -24,7 +24,8 @@ dens.aspp <- function(data,
                       contour = TRUE,
                       bias = NULL,
                       add_star_sig = FALSE,
-                      test_overall = TRUE){
+                      test_overall = TRUE,
+                      add_square_counts = TRUE){
             if (!is(data, "data.frame")) {
               stop("Input (data) is of wrong class.")
             }
@@ -171,6 +172,10 @@ dens.aspp <- function(data,
             if (!is(test_overall, "logical")) {
               stop("Input (test_overall) is of wrong class.")
             }
+            if (!is(add_square_counts, "logical")) {
+              stop("Input (test_overall) is of wrong class.")
+            }
+  
             if(type_plot == "subtraction_square_plot"){
               t1 <- ppp(data$X,
                         data$Y,
@@ -190,9 +195,11 @@ dens.aspp <- function(data,
                                    ny = nr_sq
                 )
                 if(is.null(z_lim)){
-                  plot(intensity(Q1-Q2, image = TRUE), 
+                  plot(intensity(Q2-Q1, image = TRUE), 
                        main = title, 
                        las = 1,
+                       zlim = c(-max(abs(intensity(Q2-Q1, image = TRUE)$v), na.rm=T),
+                                max(abs(intensity(Q2-Q1, image = TRUE)$v), na.rm=T)),
                        axes = TRUE,
                        box = FALSE,
                        ribbon = ribbon,
@@ -203,7 +210,7 @@ dens.aspp <- function(data,
                                                             1,
                                                             bias))(n = 255)
                   )
-                } else{ plot(intensity(Q1-Q2, image = TRUE), 
+                } else{ plot(intensity(Q2-Q1, image = TRUE), 
                              main = title, 
                              las = 1, 
                              zlim = z_lim, 
@@ -281,6 +288,7 @@ dens.aspp <- function(data,
                 p <- plot(k2 - k1, 
                           las = 1, 
                           main = title,
+                          zlim = c(-max(abs((k2-k1)$v), na.rm = T),max(abs((k2-k1)$v), na.rm = T)),
                           axes = TRUE,
                           box = FALSE,
                           ribbon = ribbon,
@@ -397,13 +405,15 @@ dens.aspp <- function(data,
                   )
                 }
               } else {
-                p <- plot(Q1,
-                          add = TRUE,
-                          col = "white", 
-                          cex = num_size,
-                          cex.axis = cex.axis,
-                          cex.lab = cex.lab
-                )
+                if(add_square_counts){
+                  p <- plot(Q1,
+                            add = TRUE,
+                            col = "white", 
+                            cex = num_size,
+                            cex.axis = cex.axis,
+                            cex.lab = cex.lab
+                  )
+                }
               }
               mtext(expression(paste("Distance ", "(", mu, "m)")),
                     side = 1,

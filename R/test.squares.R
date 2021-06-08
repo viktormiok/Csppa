@@ -4,11 +4,11 @@
 #
 ###############################################################################
 
-test.squares <- function(null = dat1,
-                         alt = dat2,
-                         method = "friedman",
-                         window = window,
-                         nr_sq = 10){
+test.squares <- function(null=dat1,
+                         alt=dat2,
+                         method="friedman",
+                         window=window,
+                         nr_sq=10){
                 if (!is(null, "list")) {
                   stop("Input (null) is of wrong class.")
                 }
@@ -38,16 +38,16 @@ test.squares <- function(null = dat1,
                   a <- rbind(a, 
                              quadratcount(ppp(null[[i]]$X, 
                                               null[[i]]$Y,
-                                              window = window),
-                                          nx = nr_sq,
-                                          ny = nr_sq)
+                                              window=window),
+                                          nx=nr_sq,
+                                          ny=nr_sq)
                   )
                   b <- rbind(b, 
                              quadratcount(ppp(alt[[i]]$X, 
                                               alt[[i]]$Y,
-                                              window = window),
-                                          nx = nr_sq, 
-                                          ny = nr_sq)
+                                              window=window),
+                                          nx=nr_sq, 
+                                          ny=nr_sq)
                   )
                 }
                 for(i in 1:ncol(a)){
@@ -58,9 +58,9 @@ test.squares <- function(null = dat1,
                   if(method == "wilcox"){
                     result[i] <-  wilcox.exact(a[,i],
                                                b[,i], 
-                                               paired = TRUE,
-                                               alternative = "greater",
-                                               exact = FALSE)$p.value
+                                               paired=TRUE,
+                                               alternative="greater",
+                                               exact=FALSE)$p.value
                   }   
                 }
                 #result <- p.adjust(result, "fdr")

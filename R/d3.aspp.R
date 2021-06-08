@@ -5,14 +5,14 @@
 ###############################################################################
 
 d3.aspp <- function(data,
-                    data1 = NULL,
-                    type_plot = "3D_plot",
+                    data1=NULL,
+                    type_plot="3D_plot",
                     window,
-                    sigma = 15,
-                    theta = 40,
-                    phi = 35,
-                    col = "lightblue",
-                    title = " "){
+                    sigma=15,
+                    theta=40,
+                    phi=35,
+                    col="lightblue",
+                    title=" "){
   
           if (!is(data, "data.frame")) {
             stop("Input (data) is of wrong class.")
@@ -77,43 +77,43 @@ d3.aspp <- function(data,
           if(type_plot == "3D_plot"){
             k1 <- density(ppp(data$X,
                               data$Y,
-                              window = window),
-                          sigma = sigma
+                              window=window),
+                          sigma=sigma
             ) 
             if(!is.null(data1)){
               k2 <- density(ppp(data1$X,
                                 data1$Y,
-                                window = window),
-                            sigma = sigma
+                                window=window),
+                            sigma=sigma
               ) 
               persp(k2 - k1, 
-                    col = "lightblue",
-                    theta = theta,
-                    phi = phi,
-                    main = title
+                    col="lightblue",
+                    theta=theta,
+                    phi=phi,
+                    main=title
               )
             } else{
               persp(k1, 
-                    col = "lightcyan",
-                    theta = theta,
-                    phi = phi,
-                    main = title,
-                    shade = 0.0001,
-                    axes = TRUE,
-                    box = TRUE
+                    col="lightcyan",
+                    theta=theta,
+                    phi=phi,
+                    main=title,
+                    shade=0.0001,
+                    axes=TRUE,
+                    box=TRUE
               ) 
             }
           }
           if(type_plot == "3D_plot_interactive"){
             # Compute kde2d
             kd <- with(data, 
-                       MASS::kde2d(x = X, 
-                                   y = Y,
-                                   n = 50)
+                       MASS::kde2d(x=X, 
+                                   y=Y,
+                                   n=50)
             )
             # Plot with plotly
-            p <- plot_ly(x = kd$x, 
-                         y = kd$y,
-                         z = kd$z) %>% add_surface()
+            p <- plot_ly(x=kd$x, 
+                         y=kd$y,
+                         z=kd$z) %>% add_surface()
           }
 }

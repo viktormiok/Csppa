@@ -6,15 +6,15 @@
 
 diff.aspp <- function(null,
                       alternative,
-                      method = "friedman",
-                      nr_sq = 10, 
+                      method="friedman",
+                      nr_sq=10, 
                       window,
-                      title = "",
-                      ribbon = TRUE,
-                      cex.axis = 1,
-                      cex.lab = 1,
-                      col = c("blue", "white", "red"),
-                      testonly = FALSE){
+                      title="",
+                      ribbon=TRUE,
+                      cex.axis=1,
+                      cex.lab=1,
+                      col=c("blue", "white", "red"),
+                      testonly=FALSE){
             if (!is(null, "list")) {
               stop("Input (null) is of wrong class.")
             }
@@ -87,17 +87,19 @@ diff.aspp <- function(null,
             
             a <- b <- result <- numeric()
             for(i in 1:length(null)){
-              a <- rbind(a, quadratcount(ppp(null[[i]]$X,
-                                             null[[i]]$Y, 
-                                             window = window), 
-                                         nx = nr_sq, 
-                                         ny = nr_sq)
+              a <- rbind(a,
+                         quadratcount(ppp(null[[i]]$X,
+                                          null[[i]]$Y, 
+                                          window=window), 
+                                      nx=nr_sq, 
+                                      ny=nr_sq)
               )
-              b <- rbind(b, quadratcount(ppp(alternative[[i]]$X, 
-                                             alternative[[i]]$Y, 
-                                             window = window),
-                                         nx = nr_sq,
-                                         ny = nr_sq)
+              b <- rbind(b,
+                         quadratcount(ppp(alternative[[i]]$X, 
+                                          alternative[[i]]$Y, 
+                                          window=window),
+                                      nx=nr_sq,
+                                      ny=nr_sq)
               )
             }
             for(i in 1:ncol(a)){
@@ -108,9 +110,9 @@ diff.aspp <- function(null,
               if(method == "wilcox"){
                 result[i] <-  wilcox.exact(a[,i],
                                            b[,i], 
-                                           paired = TRUE,
-                                           alternative = "greater", 
-                                           exact = FALSE)$p.value
+                                           paired=TRUE,
+                                           alternative="greater", 
+                                           exact=FALSE)$p.value
               }   
             }
             null_all <- do.call("rbind", null)
@@ -118,37 +120,37 @@ diff.aspp <- function(null,
             
             t1 <- ppp(null_all$X, 
                       null_all$Y,
-                      window = window
+                      window=window
             )
             t2 <- ppp(alt_all$X,
                       alt_all$Y, 
-                      window = window
+                      window=window
             )
             k2 <- density(t2,
-                          sigma = 15
+                          sigma=15
             ) 
             if(!testonly){
               p <- plot(k2, 
-                        las = 1,
-                        main = title,
-                        axes = TRUE,
-                        box = FALSE,
-                        ribbon = ribbon,
-                        cex.axis = cex.axis,
-                        cex.lab = cex.lab,
-                        col = colorRampPalette(col)(n = 255)
+                        las=1,
+                        main=title,
+                        axes=TRUE,
+                        box=FALSE,
+                        ribbon=ribbon,
+                        cex.axis=cex.axis,
+                        cex.lab=cex.lab,
+                        col=colorRampPalette(col)(n=255)
               )
               contour(k2, 
-                      add = TRUE
+                      add=TRUE
               )
             }
             Q1 <- quadratcount(t1,
-                               nx = nr_sq,
-                               ny = nr_sq
+                               nx=nr_sq,
+                               ny=nr_sq
             )
             Q2 <- quadrat.test(t2,
-                               nx = nr_sq,
-                               ny = nr_sq
+                               nx=nr_sq,
+                               ny=nr_sq
             )
             Q2$expected <- Q1
             #padj <- p.adjust(result, "fdr")
@@ -156,51 +158,55 @@ diff.aspp <- function(null,
             Q2$residuals <- result #padj
             if(!testonly){
               p <- plot(Q2,
-                        add = TRUE,
-                        col = ifelse(result < 0.05, "lawngreen", 'white'),
-                        cex = ifelse(result < 0.05, 1.3, 1.1)
+                        add=TRUE,
+                        col=ifelse(result < 0.05, "lawngreen", 'white'),
+                        cex=ifelse(result < 0.05, 1.3, 1.1)
               )
               mtext(expression(paste("Distance ", "(", mu, "m)")),
-                    side = 1,
-                    line = 2
+                    side=1,
+                    line=2
               )
               mtext(expression(paste("Distance ", "(", mu, "m)")),
-                    side = 2, 
-                    line = 2
+                    side=2, 
+                    line=2
               )
               if(ribbon){
-                mtext("Kernel Density", side = 4, line = 1, cex = cex.lab)
+                mtext("Kernel Density",
+                      side=4,
+                      line=1,
+                      cex=cex.lab
+                )
               }
             }
-            treated = as.numeric(Q2$observed)
-            untreated = as.numeric(Q2$expected)
+            treated=as.numeric(Q2$observed)
+            untreated=as.numeric(Q2$expected)
             if(method == "friedman"){
-              frid = friedman.test(cbind(treated, untreated))
+              frid=friedman.test(cbind(treated, untreated))
               text(300, 450, 
                    paste("Friedman rank sum test:","\n p-value =", as.character(frid$p.value)),
-                   cex = 1
+                   cex=1
               )
               if(!testonly){
-                return(list(l1 = frid,
-                            l1 = p))
+                return(list(l1=frid,
+                            l1=p))
               } else{
                 return(frid)
               }
             }
             if(method == "wilcox"){
-              wilc = wilcox.exact(treated,
-                                  untreated,
-                                  paired = TRUE,
-                                  alternative = "greater",
-                                  exact = FALSE
+              wilc=wilcox.exact(treated,
+                                untreated,
+                                paired=TRUE,
+                                alternative="greater",
+                                exact=FALSE
               )
               text(300, 450, 
                    paste("Friedman rank sum test:","\n p-value =", as.character(frid$p.value)),
-                   cex = 1
+                   cex=1
               )
               if(!testonly){
-                return(list(l1 = wilc,
-                            l1 = p))
+                return(list(l1=wilc,
+                            l1=p))
               } else{
                 return(wilc)
               }

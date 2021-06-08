@@ -24,11 +24,11 @@ mdim.scal <- function(dataX,
               stop("Number of elements is different in data sets.")
             }
             # fit forest and extract proximity measure
-            spiral_rf <- randomForest(x = cbind(dataX, dataX),
-                                      y = as.factor(dataG),
-                                      ntree = 10000,
-                                      proximity = TRUE,
-                                      oob.prox = TRUE,
+            spiral_rf <- randomForest(x=cbind(dataX, dataX),
+                                      y=as.factor(dataG),
+                                      ntree=10000,
+                                      proximity=TRUE,
+                                      oob.prox=TRUE,
             )
             
             # convert proximities into distances
@@ -40,13 +40,13 @@ mdim.scal <- function(dataX,
             spiral_mds <- as.data.frame(cmdscale(spiral_dist))
             spiral_mds$class <- as.factor(dataG)
             # plot the result, sweet
-            p <- ggplot(data = spiral_mds, aes(x = V1,
-                                               y = V2, 
-                                               colour = class)) +
+            p <- ggplot(data=spiral_mds, aes(x=V1,
+                                             y=V2, 
+                                             colour=class)) +
               geom_point() +
-              labs(x = "1st dimension",
-                   y = "2nd dimension",
-                   title = "Multidimensional scaling based 
+              labs(x="1st dimension",
+                   y="2nd dimension",
+                   title="Multidimensional scaling based 
                                       on random forest proximity"
               )
             return(p)

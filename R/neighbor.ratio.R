@@ -8,7 +8,7 @@ neighbor.ratio <- function(dataX,
                            dataY,
                            dataG,
                            diam,
-                           per_marker = TRUE){
+                           per_marker=TRUE){
                 if (!is(dataX, "numeric")) {
                   stop("Input (dataX) is of wrong class.")
                 }

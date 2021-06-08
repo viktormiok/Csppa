@@ -40,7 +40,7 @@ get.data <- function(data,
               result[[paste(marker, 
                             diet, 
                             j, 
-                            sep = '_')]] <- data[(data[,1] == diet) &
+                            sep='_')]] <- data[(data[,1] == diet) &
                                                    (data[,2] == marker) &
                                                    (data[,3] %in% mouse) &
                                                    (data[,4] %in% j),] 
@@ -49,7 +49,7 @@ get.data <- function(data,
             for(i in diet){
               result[[paste(marker,
                             i, 
-                            sep = '_')]] <- data[(data[,1] == i) &
+                            sep='_')]] <- data[(data[,1] == i) &
                                                    (data[,2] == marker) &
                                                    (data[,3] %in% mouse) &
                                                    (data[,4] %in% arc),] 

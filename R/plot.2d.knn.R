@@ -11,13 +11,13 @@ plot.2d.knn <- function(train_labels,
                        k,
                        X1,
                        X2,
-                       distance = distance.euclidean,
-                       standardize = FALSE,
-                       to_classify_labels = train_labels,
-                       to_classify_data = train_data,
-                       lengthX1 = 100, 
-                       lengthX2 = 100,
-                       plot_class_rate = TRUE) {
+                       distance=distance.euclidean,
+                       standardize=FALSE,
+                       to_classify_labels=train_labels,
+                       to_classify_data=train_data,
+                       lengthX1=100, 
+                       lengthX2=100,
+                       plot_class_rate=TRUE) {
             if (!is(train_labels, "character")) {
               stop("Input (train_labels) is of wrong class.")
             }
@@ -102,20 +102,22 @@ plot.2d.knn <- function(train_labels,
             if (!is(plot_class_rate, "logical")) {
               stop("Input (plot_class_rate) is of wrong class.")
             }
-            plot.2d.classify(to_classify_labels = to_classify_labels,
-                             to_classify_data = to_classify_data,
+            plot.2d.classify(to_classify_labels=to_classify_labels,
+                             to_classify_data=to_classify_data,
                              classify_method <- function(to_classify_data){
-                               get.knn(train_labels = train_labels,
-                                       train_data = train_data[, c(X1, X2)], 
-                                       to_classify_data = to_classify_data, 
-                                       k = k, 
-                                       distance = distance, 
-                                       standardize = standardize)},
+                               get.knn(train_labels=train_labels,
+                                       train_data=train_data[, c(X1, X2)], 
+                                       to_classify_data=to_classify_data, 
+                                       k=k, 
+                                       distance=distance, 
+                                       standardize=standardize
+                               )},
                              X1,
                              X2,
-                             lengthX1 = lengthX1,
-                             lengthX2 = lengthX2,
-                             title = paste0("k == ", k),
-                             plot_class_rate = plot_class_rate)
+                             lengthX1=lengthX1,
+                             lengthX2=lengthX2,
+                             title=paste0("k == ", k),
+                             plot_class_rate=plot_class_rate
+            )
 }
 

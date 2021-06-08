@@ -24,24 +24,24 @@ randF.class <- function(dataX,
                 stop("Number of elements is different in data sets.")
               }
               spiral_data <- data.frame(cbind(dataX, dataY), 
-                                        y = factor(dataG)
+                                        y=factor(dataG)
               )
               colnames(spiral_data) <- c("x1", "x2", "y")
               # set features that should be inspected within the regions
               features <- c("x1", "x2")
-              spiral_task <- TaskClassif$new(id = "spirals",
-                                             backend = spiral_data,
-                                             target = "y"
+              spiral_task <- TaskClassif$new(id="spirals",
+                                             backend=spiral_data,
+                                             target="y"
               )
               plot_learner_prediction(
                 lrn("classif.rpart",
-                    predict_type = "prob"),
+                    predict_type="prob"),
                 spiral_task
               )
               
               plot_learner_prediction(
                 lrn("classif.ranger", 
-                    predict_type = "prob"),
+                    predict_type="prob"),
                 spiral_task
               )
 }

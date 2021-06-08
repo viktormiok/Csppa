@@ -11,8 +11,8 @@ get.knn <- function(train_labels,
                     train_data,
                     to_classify_data, 
                     k, 
-                    distance = distance.euclidean, 
-                    standardize = FALSE) {
+                    distance=distance.euclidean, 
+                    standardize=FALSE) {
           if (!is(train_labels, "character")) {
             stop("Input (train_labels) is of wrong class.")
           }
@@ -55,18 +55,18 @@ get.knn <- function(train_labels,
           # standardize the feature vectors if desired
           if (standardize == TRUE) { 
             train_data <- scale(train_data) 
-            to_classify_data <- scale(
-              to_classify_data,
-              center = attr(train_data, "scaled:center"), 
-              scale = attr(train_data, "scaled:scale")
+            to_classify_data <- scale(to_classify_data,
+                                      center=attr(train_data, 
+                                                  "scaled:center"), 
+                                      scale=attr(train_data, 
+                                                 "scaled:scale")
             ) 
           }
           for (i in seq_len(num_preds)) {
             # compute distance to all training data points 
-            distance_to_train <- apply(
-              train_data,
-              MARGIN = 1,
-              FUN = function(x) distance(x, to_classify_data[i, ])
+            distance_to_train <- apply(train_data,
+                                       MARGIN=1,
+                                       FUN=function(x) distance(x, to_classify_data[i, ])
             )
             # extract row indices of k nearest ones
             nearest_neighbors <- order(distance_to_train)[1:k]
@@ -79,7 +79,7 @@ get.knn <- function(train_labels,
             #  boundaries in the figs. below) 
             pred[i] <- sample(most_frequent_classes, 1)
           }
-          list(prediction = pred,
-               levels = levels(train_labels)
+          list(prediction=pred,
+               levels=levels(train_labels)
           ) 
 }

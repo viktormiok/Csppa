@@ -6,26 +6,26 @@
 ###############################################################################
 
 dens.aspp <- function(data, 
-                      data1 = NULL,
-                      test_null = NULL,
-                      test_alt = NULL,
-                      method = "friedman",
-                      nr_sq = 10,
-                      z_lim = NULL,
-                      type_plot = "test_plot", 
-                      title = " ", 
+                      data1=NULL,
+                      test_null=NULL,
+                      test_alt=NULL,
+                      method="friedman",
+                      nr_sq=10,
+                      z_lim=NULL,
+                      type_plot="test_plot", 
+                      title=" ", 
                       window, 
-                      cex.axis = 1,
-                      cex.lab = 1,
-                      col = c("blue", "white", "red"),
-                      num_size = 1.2,
-                      num_size_sig = 1.5,
-                      ribbon = FALSE,
-                      contour = TRUE,
-                      bias = NULL,
-                      add_star_sig = FALSE,
-                      test_overall = TRUE,
-                      add_square_counts = TRUE){
+                      cex.axis=1,
+                      cex.lab=1,
+                      col=c("blue", "white", "red"),
+                      num_size=1.2,
+                      num_size_sig=1.5,
+                      ribbon=FALSE,
+                      contour=TRUE,
+                      bias=NULL,
+                      add_star_sig=FALSE,
+                      test_overall=TRUE,
+                      add_square_counts=TRUE){
             if (!is(data, "data.frame")) {
               stop("Input (data) is of wrong class.")
             }
@@ -179,254 +179,267 @@ dens.aspp <- function(data,
             if(type_plot == "subtraction_square_plot"){
               t1 <- ppp(data$X,
                         data$Y,
-                        window = window
+                        window=window
               )
               Q1 <- quadratcount(t1, 
-                                 nx = nr_sq,
-                                 ny = nr_sq
+                                 nx=nr_sq,
+                                 ny=nr_sq
               )
               if(!is.null(data1)){
                 t2 <- ppp(data1$X,
                           data1$Y,
-                          window = window
+                          window=window
                 )
                 Q2 <- quadratcount(t2, 
-                                   nx = nr_sq,
-                                   ny = nr_sq
+                                   nx=nr_sq,
+                                   ny=nr_sq
                 )
                 if(is.null(z_lim)){
-                  plot(intensity(Q2-Q1, image = TRUE), 
-                       main = title, 
-                       las = 1,
-                       zlim = c(-max(abs(intensity(Q2-Q1, image = TRUE)$v), na.rm=T),
-                                max(abs(intensity(Q2-Q1, image = TRUE)$v), na.rm=T)),
-                       axes = TRUE,
-                       box = FALSE,
-                       ribbon = ribbon,
-                       cex.axis = cex.axis,
-                       cex.lab = cex.lab,
-                       col = colorRampPalette(col, 
-                                              bias = ifelse(is.null(bias),
+                  plot(intensity(Q2-Q1, image=TRUE), 
+                       main=title, 
+                       las=1,
+                       zlim=c(-max(abs(intensity(Q2-Q1, image=TRUE)$v), na.rm=T),
+                              max(abs(intensity(Q2-Q1, image=TRUE)$v), na.rm=T)),
+                       axes=TRUE,
+                       box=FALSE,
+                       ribbon=ribbon,
+                       cex.axis=cex.axis,
+                       cex.lab=cex.lab,
+                       col=colorRampPalette(col, 
+                                            bias=ifelse(is.null(bias),
                                                             1,
-                                                            bias))(n = 255)
+                                                            bias))(n=255)
                   )
-                } else{ plot(intensity(Q2-Q1, image = TRUE), 
-                             main = title, 
-                             las = 1, 
-                             zlim = z_lim, 
-                             axes = TRUE,
-                             box = FALSE,
-                             ribbon = ribbon,
-                             cex.axis = cex.axis,
-                             cex.lab = cex.lab,
-                             col = colorRampPalette(col, 
-                                                    bias = ifelse(is.null(bias),
-                                                                  1,
-                                                                  bias))(n = 255)
+                } else{ plot(intensity(Q2-Q1, image=TRUE), 
+                             main=title, 
+                             las=1, 
+                             zlim=z_lim, 
+                             axes=TRUE,
+                             box=FALSE,
+                             ribbon=ribbon,
+                             cex.axis=cex.axis,
+                             cex.lab=cex.lab,
+                             col=colorRampPalette(col, 
+                                                  bias=ifelse(is.null(bias),
+                                                              1,
+                                                              bias))(n=255)
                 )
                 }
               } else { if(is.null(z_lim)){
-                plot(intensity(Q1, image = TRUE), 
-                     main = title, 
-                     las = 1, 
-                     axes = TRUE,
-                     box = FALSE,
-                     ribbon = ribbon,
-                     cex.axis = cex.axis,
-                     cex.lab = cex.lab,
-                     col = colorRampPalette(col, 
-                                            bias = ifelse(is.null(bias), 
-                                                          1,
-                                                          bias))(n = 255)
+                plot(intensity(Q1, image=TRUE), 
+                     main=title, 
+                     las=1, 
+                     axes=TRUE,
+                     box=FALSE,
+                     ribbon=ribbon,
+                     cex.axis=cex.axis,
+                     cex.lab=cex.lab,
+                     col=colorRampPalette(col, 
+                                          bias=ifelse(is.null(bias), 
+                                                      1,
+                                                      bias))(n=255)
                 )
-              } else{plot(intensity(Q1, image = TRUE), 
-                          main = title, 
-                          las = 1, 
-                          zlim = z_lim, 
-                          axes = TRUE,
-                          box = FALSE,
-                          ribbon = ribbon,
-                          cex.axis = cex.axis,
-                          cex.lab = cex.lab,
-                          col = colorRampPalette(col, 
-                                                 bias = ifelse(is.null(bias),
-                                                               1,
-                                                               bias))(n = 255)
+              } else{plot(intensity(Q1, image=TRUE), 
+                          main=title, 
+                          las=1, 
+                          zlim=z_lim, 
+                          axes=TRUE,
+                          box=FALSE,
+                          ribbon=ribbon,
+                          cex.axis=cex.axis,
+                          cex.lab=cex.lab,
+                          col=colorRampPalette(col, 
+                                               bias=ifelse(is.null(bias),
+                                                           1,
+                                                           bias))(n=255)
               )
               }
               }  
               mtext(expression(paste("Distance ", "(", mu, "m)")),
-                    side = 1,
-                    line = 2,
-                    cex = cex.lab
+                    side=1,
+                    line=2,
+                    cex=cex.lab
               )
               mtext(expression(paste("Distance ", "(", mu, "m)")),
-                    side = 2, 
-                    line = 1,
-                    cex = cex.lab
+                    side=2, 
+                    line=1,
+                    cex=cex.lab
               )
               if(ribbon){
-                mtext("Kernel Density", side = 4, line = 1, cex = cex.lab)
+                mtext("Kernel Density",
+                      side=4, 
+                      line=1,
+                      cex=cex.lab
+                )
               }
             }
             if(type_plot == "subtraction_dens_plot"){
               t1 <- ppp(data$X,
                         data$Y,
-                        window = window
+                        window=window
               )
               t2 <- ppp(data1$X,
                         data1$Y,
-                        window = window
+                        window=window
               )
               k1 <- density(t1,
-                            sigma = 15
+                            sigma=15
               ) 
               k2 <- density(t2,
-                            sigma = 15
+                            sigma=15
               ) 
               if(is.null(z_lim)){
                 p <- plot(k2 - k1, 
-                          las = 1, 
-                          main = title,
-                          zlim = c(-max(abs((k2-k1)$v), na.rm = T),max(abs((k2-k1)$v), na.rm = T)),
-                          axes = TRUE,
-                          box = FALSE,
-                          ribbon = ribbon,
-                          col = colorRampPalette(col, 
-                                                 bias = ifelse(is.null(bias),
-                                                               1,
-                                                               bias))(n = 255),
-                          cex.axis = cex.axis,
-                          cex.lab = cex.lab
+                          las=1, 
+                          main=title,
+                          zlim=c(-max(abs((k2-k1)$v), na.rm=T)
+                                 ,max(abs((k2-k1)$v), na.rm=T)),
+                          axes=TRUE,
+                          box=FALSE,
+                          ribbon=ribbon,
+                          col=colorRampPalette(col, 
+                                               bias=ifelse(is.null(bias),
+                                                           1,
+                                                           bias))(n=255),
+                          cex.axis=cex.axis,
+                          cex.lab=cex.lab
                 ) 
               } else{
                 p <- plot(k2 - k1, 
-                          las = 1, 
-                          main = title,
-                          zlim = z_lim,
-                          axes = TRUE,
-                          box = FALSE,
-                          ribbon = ribbon,
-                          col = colorRampPalette(col, 
-                                                 bias = ifelse(is.null(bias),
-                                                               1,
-                                                               bias))(n = 255),
-                          cex.axis = cex.axis,
-                          cex.lab = cex.lab
+                          las=1, 
+                          main=title,
+                          zlim=z_lim,
+                          axes=TRUE,
+                          box=FALSE,
+                          ribbon=ribbon,
+                          col=colorRampPalette(col, 
+                                               bias=ifelse(is.null(bias),
+                                                           1,
+                                                           bias))(n=255),
+                          cex.axis=cex.axis,
+                          cex.lab=cex.lab
                 ) 
               }
               if(contour)
                 contour(k2 - k1, 
-                        add = TRUE
+                        add=TRUE
                 )
               mtext(expression(paste("Distance ", "(", mu, "m)")),
-                    side = 1, 
-                    line = 3, 
-                    cex = cex.lab
+                    side=1, 
+                    line=3, 
+                    cex=cex.lab
               )
               mtext(expression(paste("Distance ", "(", mu, "m)")),
-                    side = 2,
-                    line = 2,
-                    cex = cex.lab
+                    side=2,
+                    line=2,
+                    cex=cex.lab
               )
               if(ribbon){
-                mtext("Kernel Density", side = 4, line = 1, cex = cex.lab)
+                mtext("Kernel Density", 
+                      side=4,
+                      line=1,
+                      cex=cex.lab
+                )
               }
             } 
             if(type_plot == "test_plot"){
               # density plot with contour and number of points per square
               t1 <- ppp(data$X,
                         data$Y,
-                        window = window
+                        window=window
               )
               k1 <- density(t1,
-                            sigma = 15
+                            sigma=15
               ) 
               if(is.null(z_lim)){
                 p <- plot(k1, 
-                          las = 1, 
-                          main = title,
-                          axes = TRUE,
-                          box = FALSE,
-                          ribbon = ribbon,
-                          col = colorRampPalette(col)(n = 255),
-                          cex.axis = cex.axis,
-                          cex.lab = cex.lab
+                          las=1, 
+                          main=title,
+                          axes=TRUE,
+                          box=FALSE,
+                          ribbon=ribbon,
+                          col=colorRampPalette(col)(n=255),
+                          cex.axis=cex.axis,
+                          cex.lab=cex.lab
                 ) 
               } else{
                 p <- plot(k1, 
-                          las = 1, 
-                          main = title,
-                          zlim = z_lim,
-                          axes = TRUE,
-                          box = FALSE,
-                          ribbon = ribbon,
-                          col = colorRampPalette(col)(n = 255),
-                          cex.axis = cex.axis,
-                          cex.lab = cex.lab
+                          las=1, 
+                          main=title,
+                          zlim=z_lim,
+                          axes=TRUE,
+                          box=FALSE,
+                          ribbon=ribbon,
+                          col=colorRampPalette(col)(n=255),
+                          cex.axis=cex.axis,
+                          cex.lab=cex.lab
                 ) 
               }
               if(contour){
                 contour(k1, 
-                        add = TRUE
+                        add=TRUE
                 )
               }
               Q1 <- quadratcount(t1, 
-                                 nx = nr_sq,
-                                 ny = nr_sq
+                                 nx=nr_sq,
+                                 ny=nr_sq
               )
               if(!is.null(test_null)){
-                result <- test.squares(null = test_null, 
-                                       alt = test_alt, 
-                                       nr_sq = nr_sq,
-                                       window = window,
-                                       method = "friedman"
+                result <- test.squares(null=test_null, 
+                                       alt=test_alt, 
+                                       nr_sq=nr_sq,
+                                       window=window,
+                                       method="friedman"
                 )
                 result[is.nan(result)] <- 1
                 if(add_star_sig){
                   for(i in 1:length(Q1)) {
                     if(result[i] < 0.05) Q1[i] <- paste(Q1[i],
                                                         "*",
-                                                        sep = "")
+                                                        sep="")
                   } 
                 }
                 p <- plot(Q1,
-                          add = TRUE,
-                          col = ifelse(result < 0.05, "green3", 'white'), # lawngreen
-                          cex = ifelse(result < 0.05, num_size_sig, num_size)
+                          add=TRUE,
+                          col=ifelse(result < 0.05, "green3", 'white'), # lawngreen
+                          cex=ifelse(result < 0.05, num_size_sig, num_size)
                 )
                 if(test_overall){
-                  out <- diff.aspp(null = test_null, 
-                                   alternative = test_alt, 
-                                   nr_sq = nr_sq,
-                                   window = window,
-                                   method = "friedman",
-                                   testonly = TRUE
+                  out <- diff.aspp(null=test_null, 
+                                   alternative=test_alt, 
+                                   nr_sq=nr_sq,
+                                   window=window,
+                                   method="friedman",
+                                   testonly=TRUE
                   )
                 }
               } else {
                 if(add_square_counts){
                   p <- plot(Q1,
-                            add = TRUE,
-                            col = "white", 
-                            cex = num_size,
-                            cex.axis = cex.axis,
-                            cex.lab = cex.lab
+                            add=TRUE,
+                            col="white", 
+                            cex=num_size,
+                            cex.axis=cex.axis,
+                            cex.lab=cex.lab
                   )
                 }
               }
               mtext(expression(paste("Distance ", "(", mu, "m)")),
-                    side = 1,
-                    line = 3,
-                    cex = cex.lab
+                    side=1,
+                    line=3,
+                    cex=cex.lab
               )
               mtext(expression(paste("Distance ", "(", mu, "m)")),
-                    side = 2,
-                    line = 2,
-                    cex = cex.lab
+                    side=2,
+                    line=2,
+                    cex=cex.lab
               )
               if(ribbon){
-                mtext("Kernel Density", side = 4, line = 1, cex = cex.lab)
+                mtext("Kernel Density",
+                      side=4,
+                      line=1,
+                      cex=cex.lab
+                )
               }
               
             }

@@ -1,2 +1,2 @@
 # asppa
-R scripts for Analysis of Spatial Point Patterns of Astrocytes in the arcuate nucleus of the hypothalamus.
+The R-package `asppa` performs visualisation and analysis of spatial point pattern data using machine learning algorithms.

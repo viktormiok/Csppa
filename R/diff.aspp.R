@@ -152,10 +152,10 @@ diff.aspp <- function(null,
                                nx=nr_sq,
                                ny=nr_sq
             )
-            Q2$expected <- Q1
+            Q2$expected = Q1
             #padj <- p.adjust(result, "fdr")
-            result[is.nan(result)] <- 1
-            Q2$residuals <- result #padj
+            result[is.nan(result)] = 1
+            Q2$residuals = result #padj
             if(!testonly){
               p <- plot(Q2,
                         add=TRUE,
@@ -178,12 +178,13 @@ diff.aspp <- function(null,
                 )
               }
             }
-            treated=as.numeric(Q2$observed)
-            untreated=as.numeric(Q2$expected)
+            treated = as.numeric(Q2$observed)
+            untreated = as.numeric(Q2$expected)
             if(method == "friedman"){
               frid=friedman.test(cbind(treated, untreated))
               text(300, 450, 
-                   paste("Friedman rank sum test:","\n p-value =", as.character(frid$p.value)),
+                   paste("Friedman rank sum test:","\n p-value =", 
+                         as.character(frid$p.value)),
                    cex=1
               )
               if(!testonly){
@@ -200,8 +201,10 @@ diff.aspp <- function(null,
                                 alternative="greater",
                                 exact=FALSE
               )
-              text(300, 450, 
-                   paste("Friedman rank sum test:","\n p-value =", as.character(frid$p.value)),
+              text(300, 
+                   450, 
+                   paste("Friedman rank sum test:","\n p-value =",
+                         as.character(frid$p.value)),
                    cex=1
               )
               if(!testonly){

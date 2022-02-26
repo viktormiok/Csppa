@@ -34,25 +34,25 @@ get.data <- function(data,
           if (!is(cal_arc, "logical")) {
             stop("Input (cal_arc) is of wrong class.")
           }
-          result <- list()
+          result = list()
           if(cal_arc == TRUE){
             for(j in arc){
               result[[paste(marker, 
                             diet, 
                             j, 
                             sep='_')]] <- data[(data[,1] == diet) &
-                                                   (data[,2] == marker) &
-                                                   (data[,3] %in% mouse) &
-                                                   (data[,4] %in% j),] 
+                                               (data[,2] == marker) &
+                                               (data[,3] %in% mouse) &
+                                               (data[,4] %in% j),] 
             }
           } else {
             for(i in diet){
               result[[paste(marker,
                             i, 
                             sep='_')]] <- data[(data[,1] == i) &
-                                                   (data[,2] == marker) &
-                                                   (data[,3] %in% mouse) &
-                                                   (data[,4] %in% arc),] 
+                                               (data[,2] == marker) &
+                                               (data[,3] %in% mouse) &
+                                               (data[,4] %in% arc),] 
             }
           }
           return(result)

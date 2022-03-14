@@ -18,7 +18,15 @@
 
 ## Overview
 
-Machine learning approach for analysis and visualisation of astrocyte spatial point patterns from the medial arcuate nucleus of the hypothalamus under hypercaloric diet shifts. Repository comprise R functions for analysis and visualisation together with a jupyter notebook of the whole analysis of Gfap and Aldh1l1 astrocytes spatial point patterns from mouse under standard chow, 5 and 15 days high fat high sugar diet.
+<img src="https://github.com/viktormiok/Csppa/blob/main/RandomForestClassifier.gif" align="right" height="540" width="430">
+
+Understanding how the anatomical location of the cells and their spatial molecular distribution determine the cellular response to a high caloric diet requires developing machine learning methods for analysis and visualization.
+
+The R-package __`Csppa`__ is a machine learning approach for the analysis and visualization of cellular spatial point patterns. Hence, __`Csppa`__ allows a comprehensive understanding of spatial and temporal changes of particular cellular gene expression during different time points of adaptation to a high caloric diet.
+
+### Application
+
+Here we focus on the astrocytes from the arcuate nucleus from the mouse brain and the expression of Gfap and Aldh1l1 genes recovering spatial point patterns under standard chow (SC), 5 and 15 days high fat high sugar (HFHS) diet. The R-package __`Csppa`__ allows assessing whether these astrocyte populations are spatially organized and whether tend to form local identical clusters in response to a HFHS diet over time. To do that, the algorithm measures degree of spatial coherence (depicting the level of similarity between neighbors) of each astrocytic sub-type in different conditions (SC, 5d, or 15d HFHS diet) by applying Moran I spatial autocorrelation coefficient, previously described as an indicator of the level of spatial dispersion. On top of that, employing a random forest classifier determine the partitioning of the feature space shared by astrocytes expressing Gfap and Aldh1l1 in each experimental group.
 
 ## Installation
 
@@ -38,7 +46,7 @@ utils::vignette("Csppa")
 
 ## Data
 Data required for cellular spatial point pattern analysis will be deposited on line soon:
-| Data type     | GEO number |
+| Data type     | Data link |
 | ------------- | ------------- |
 | Aldh1l1 only  | Not available yet |
 | Gfap only      | Not available yet |

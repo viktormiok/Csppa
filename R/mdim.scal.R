@@ -37,17 +37,16 @@ mdim.scal <- function(dataX,
             }
             spiral_dist <- proximity_to_dist(spiral_rf$proximity)
             
-            spiral_mds <- as.data.frame(cmdscale(spiral_dist))
-            spiral_mds$class <- as.factor(dataG)
+            spiral_mds = as.data.frame(cmdscale(spiral_dist))
+            spiral_mds$class = as.factor(dataG)
             # plot the result, sweet
             p <- ggplot(data=spiral_mds, aes(x=V1,
                                              y=V2, 
                                              colour=class)) +
-              geom_point() +
-              labs(x="1st dimension",
-                   y="2nd dimension",
-                   title="Multidimensional scaling based 
-                                      on random forest proximity"
-              )
+                        geom_point() +
+                        labs(x="1st dimension",
+                             y="2nd dimension",
+                             title="Multidimensional scaling based on random forest proximity"
+                        )
             return(p)
 }

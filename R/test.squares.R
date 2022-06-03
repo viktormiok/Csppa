@@ -33,7 +33,7 @@ test.squares <- function(null=dat1,
                 if (!is(nr_sq, "numeric")) {
                   stop("Input (nr_sq) is of wrong class.")
                 }
-                a <- b <- result <- numeric()
+                a = b = result = numeric()
                 for(i in 1:length(null)){
                   a <- rbind(a, 
                              quadratcount(ppp(null[[i]]$X, 

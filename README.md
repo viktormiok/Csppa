@@ -18,7 +18,7 @@
 
 ## Overview
 
-<img src="https://github.com/viktormiok/Csppa/blob/main/RandomForestClassifier.gif" align="right" height="540" width="430">
+<img src="https://github.com/viktormiok/Csppa/blob/main/Figures/RandomForestClassifier.gif" align="right" height="540" width="430">
 
 Understanding how the anatomical location of the cells and their spatial molecular distribution determine the cellular response to a high caloric diet requires developing machine learning methods for analysis and visualization.
 

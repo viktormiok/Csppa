@@ -69,6 +69,6 @@ __`Csppa`__ is distributed under the MIT license. Please read the license before
 
 Publications related to __`Csppa`__ include:
 
-- Lutomska, L.M., Miok, V., Krahmer, N., González García, I., Gruber, T., Le Thuc, O., De Bernardis Murat, C., Legutko, B., Sterr, M., Saher, G., Lickert, H., Ussar, S., Tschöp, M., Lutter, D., García-Cáceres, C.(2022), "Hypercaloric diet selectively triggers a transient molecular rearrangement of astrocytes in the arcuate nucleus", *Accepted in Glia*.
+- Lutomska, L.M., Miok, V., Krahmer, N., González García, I., Gruber, T., Le Thuc, O., De Bernardis Murat, C., Legutko, B., Sterr, M., Saher, G., Lickert, H., Ussar, S., Tschöp, M., Lutter, D., García-Cáceres, C.(2022), "Hypercaloric diet selectively triggers a transient molecular rearrangement of astrocytes in the arcuate nucleus", *Glia 70 (10), 1795-2008*.
 
 Please cite the relevant publications if you use __`Csppa`__.

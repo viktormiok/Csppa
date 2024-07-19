@@ -47,7 +47,7 @@ utils::vignette("Csppa")
 ```
 
 ## Data
-Data required for cellular spatial point pattern analysis will be deposited on line soon:
+Data required for cellular spatial point pattern analysis will be deposited online soon:
 | Data type     | Data link |
 | ------------- | ------------- |
 | Aldh1l1 only  | [link](https://github.com/viktormiok/AstrocytesHeterogenityARC/blob/main/SPP_data_all.csv) |
@@ -65,7 +65,7 @@ Please see the following tutorials for detailed examples of how to use __`Csppa`
 
 ## License
 
-__`Csppa`__ is distributed under the MIT license. Please read the license before using __`Csppa`__, which it is distributed in the `LICENSE` file.
+__`Csppa`__ is distributed under the MIT license. Please read the license before using __`Csppa`__, distributed in the `LICENSE` file.
 
 ## References
 

@@ -24,7 +24,7 @@
 
 Understanding how the cells' anatomical location and spatial molecular distribution determine the cellular response to a high-caloric diet requires developing machine-learning methods for analysis and visualization.
 
-The R-package __`Csppa`__ employs machine learning for cellular spatial point pattern analysis and visualization. Hence, __`Csppa`__ allows a comprehensive understanding of spatial and temporal changes of particular cellular gene expression during different time points of adaptation to a high-caloric diet.
+The R-package __`Csppa`__ employs machine learning for cellular spatial point pattern analysis and visualization. Hence, __`Csppa`__ enables a comprehensive characterization of how specific cellular gene expression patterns evolve spatially and temporally during different stages of adaptation to a high‑caloric diet.
 
 ### Application
 

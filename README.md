@@ -28,7 +28,9 @@ The R-package __`Csppa`__ employs machine learning for cellular spatial point pa
 
 ### Application
 
-Here we focus on the astrocytes from the arcuate nucleus of the mouse brain and the expression of Gfap and Aldh1l1 genes recovering spatial point patterns under standard chow (SC), 5-day, and 15-day high-fat high-sugar (HFHS) diet. The R-package __`Csppa`__ allows for assessing whether these astrocyte populations are spatially organized and whether they tend to form local identical clusters in response to an HFHS diet over time. To achieve this, the algorithm quantifies the spatial coherence of each astrocytic subtype across the experimental conditions (SC, 5‑day HFHS, and 15‑day HFHS). Spatial coherence, reflecting the similarity among neighboring cells, is measured using Moran’s I spatial autocorrelation coefficient, previously established as an indicator of spatial dispersion. In addition, a random forest classifier is used to identify how astrocytes expressing Gfap and Aldh1l1 partition within the shared feature space for each experimental group.
+Here, we focus on astrocytes in the arcuate nucleus of the mouse brain, examining the expression of the Gfap and Aldh1l1 genes and their spatial distributions under standard chow (SC), as well as 5‑day and 15‑day high-fat high-sugar (HFHS) diet conditions. The R package __`Csppa`__ is used to assess whether these astrocyte populations are spatially organised and whether they form local clusters in response to the HFHS diet over time.
+
+To address this, the method quantifies the spatial coherence of each astrocyte subtype across the experimental conditions (SC, 5‑day HFHS, and 15‑day HFHS). Spatial coherence—representing similarity among neighbouring cells—is measured using Moran’s I spatial autocorrelation coefficient, a well-established metric of spatial dependence. In addition, a random forest classifier is applied to characterise how astrocytes expressing Gfap and Aldh1l1 are distributed within the shared feature space for each experimental group.
 
 ## Installation
 
